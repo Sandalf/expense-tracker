@@ -10,6 +10,7 @@ import com.dao.ExpenseDao;
 import com.model.Category;
 import com.model.Expense;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -23,28 +24,26 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author luissandoval
  */
-@WebServlet(name = "ExpensesController", urlPatterns = {"/ExpensesController"})
-public class ExpensesController extends HttpServlet {
-    
+@WebServlet(name = "CategoriesController", urlPatterns = {"/CategoriesController"})
+public class CategoriesController extends HttpServlet {
+
     /* Actions */
     private static final String ACTION_DELETE = "delete";
     private static final String ACTION_EDIT = "edit";
     private static final String ACTION_LIST = "list";
     
     /* Routes */
-    private static final String ROUTE_EDIT = "/expense.jsp";    
-    private static final String ROUTE_LIST = "/listExpenses.jsp";
+    private static final String ROUTE_EDIT = "/category.jsp";    
+    private static final String ROUTE_LIST = "/listCategories.jsp";
     
     /* DAOs */
-    private ExpenseDao dao;
-    private CategoryDao categoryDao;    
+    private CategoryDao dao;
     
-    public ExpensesController() {
+    public CategoriesController() {
         super();
-        dao = new ExpenseDao();
-        categoryDao = new CategoryDao();
+        dao = new CategoryDao();
     }
-
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -61,37 +60,27 @@ public class ExpensesController extends HttpServlet {
         String action = request.getParameter("action");
         
         if (action.equalsIgnoreCase(ACTION_LIST)) {
-            // List
-            Double total = dao.getTotal();            
-            request.setAttribute("expenses", dao.showAll());
-            request.setAttribute("total", total);
+            // List          
+            request.setAttribute("categories", dao.showAll());
             
             forward = ROUTE_LIST;
         } else if (action.equalsIgnoreCase(ACTION_EDIT)) {
             // Edit            
-            int expenseId = Integer.parseInt(request.getParameter("expenseId"));
-            Expense expense = dao.getById(expenseId);            
-            List<Category> categories = categoryDao.showAll();                        
-            request.setAttribute("expense", expense);
-            request.setAttribute("categories", categories);
+            int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+            Category category = dao.getById(categoryId);                                 
+            request.setAttribute("category", category);
             request.setAttribute("action", "edit");
             
             forward = ROUTE_EDIT;
         } else if (action.equalsIgnoreCase(ACTION_DELETE)) {
             // Delete
-            int expenseId = Integer.parseInt(request.getParameter("expenseId"));
-            dao.delete(expenseId);
-            
-            Double total = dao.getTotal();                        
-            request.setAttribute("expenses", dao.showAll());
-            request.setAttribute("total", total);
+            int expenseId = Integer.parseInt(request.getParameter("categoryId"));
+            dao.delete(expenseId);                               
+            request.setAttribute("categories", dao.showAll());
             
             forward = ROUTE_LIST;
         } else {
             // Insert
-            List<Category> categories = categoryDao.showAll();
-            request.setAttribute("categories", categories);
-            
             forward = ROUTE_EDIT;
         }
         
@@ -109,26 +98,21 @@ public class ExpensesController extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {                   
-        Expense expense = new Expense();
-        expense.setDescription(request.getParameter("description"));
-        expense.setAmount(Double.parseDouble(request.getParameter("amount")));
-        
-        /* Set category */ 
-        Category category = categoryDao.getById(Integer.parseInt(request.getParameter("category")));
-        expense.setCategory(category);
+            throws ServletException, IOException {
+        Category category = new Category();
+        category.setName(request.getParameter("name"));
         
         String id = request.getParameter("id");
         if (id == null || id.isEmpty()) {
-            expense.setCreatedAt(new Date());
-            dao.save(expense);
+            category.setCreatedAt(new Date());
+            dao.save(category);
         } else {
-            expense.setUpdatedAt(new Date());            
-            dao.update(Integer.parseInt(id), expense.getDescription(), expense.getCategory());
+            category.setUpdatedAt(new Date());            
+            dao.update(Integer.parseInt(id), category.getName());
         }
 
         RequestDispatcher view = request.getRequestDispatcher(ROUTE_LIST);
-        request.setAttribute("expenses", dao.showAll());
+        request.setAttribute("categories", dao.showAll());
         view.forward(request, response);
     }
 

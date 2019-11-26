@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/Volumes/HD-Luis/MyFiles/Me/ITSZ/7mo/javaweb/netbeans/expense-tracker/web/expense.jsp</file>
+            <file>file:/Volumes/HD-Luis/MyFiles/Me/ITSZ/7mo/javaweb/netbeans/expense-tracker/src/java/com/dao/CategoryDao.java</file>
+            <file>file:/Volumes/HD-Luis/MyFiles/Me/ITSZ/7mo/javaweb/netbeans/expense-tracker/src/java/com/dao/ExpenseDao.java</file>
+            <file>file:/Volumes/HD-Luis/MyFiles/Me/ITSZ/7mo/javaweb/netbeans/expense-tracker/web/listCategories.jsp</file>
+            <file>file:/Volumes/HD-Luis/MyFiles/Me/ITSZ/7mo/javaweb/netbeans/expense-tracker/src/java/com/controller/ExpensesController.java</file>
+            <file>file:/Volumes/HD-Luis/MyFiles/Me/ITSZ/7mo/javaweb/netbeans/expense-tracker/web/index.jsp</file>
+            <file>file:/Volumes/HD-Luis/MyFiles/Me/ITSZ/7mo/javaweb/netbeans/expense-tracker/web/listExpenses.jsp</file>
+            <file>file:/Volumes/HD-Luis/MyFiles/Me/ITSZ/7mo/javaweb/netbeans/expense-tracker/src/java/com/controller/CategoriesController.java</file>
+            <file>file:/Volumes/HD-Luis/MyFiles/Me/ITSZ/7mo/javaweb/netbeans/expense-tracker/web/category.jsp</file>
+            <file>file:/Volumes/HD-Luis/MyFiles/Me/ITSZ/7mo/javaweb/netbeans/expense-tracker/src/java/com/model/Expense.java</file>
+        </group>
+    </open-files>
+</project-private>
