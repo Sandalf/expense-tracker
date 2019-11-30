@@ -64,4 +64,28 @@ public class ExpenseDao {
         Double total = (Double)query.list().get(0);
         return total;
     }
+    
+    public Double getCategorySum(int categoryId) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query query = session.createQuery(
+                "select sum(exp.amount) "
+                + "from Expense exp "
+                + "where exp.category.id = " + categoryId + " "
+                + "group by exp.category.id");
+        Double total = 0.0;
+        if (!query.list().isEmpty()) {
+            total = (Double)query.list().get(0);
+        }        
+        return total;
+    }
+
+    public List<Category> getCategoriesSum() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query query = session.createQuery(
+                "select exp.category, sum(exp.amount) as total "
+                + "from Expense exp "
+                + "group by exp.category.id");
+        List<Category> categories = query.list();
+        return categories;
+    }
 }

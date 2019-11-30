@@ -38,10 +38,12 @@ public class CategoriesController extends HttpServlet {
     
     /* DAOs */
     private CategoryDao dao;
+    private ExpenseDao expensesDao;
     
     public CategoriesController() {
         super();
         dao = new CategoryDao();
+        expensesDao = new ExpenseDao();
     }
     
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -61,7 +63,13 @@ public class CategoriesController extends HttpServlet {
         
         if (action.equalsIgnoreCase(ACTION_LIST)) {
             // List          
-            request.setAttribute("categories", dao.showAll());
+            List<Category> categories = dao.showAll();
+            
+            categories.forEach((cat) -> {
+                cat.setTotal(expensesDao.getCategorySum(cat.getId()));
+            });
+          
+            request.setAttribute("categories", categories);
             
             forward = ROUTE_LIST;
         } else if (action.equalsIgnoreCase(ACTION_EDIT)) {
@@ -75,8 +83,15 @@ public class CategoriesController extends HttpServlet {
         } else if (action.equalsIgnoreCase(ACTION_DELETE)) {
             // Delete
             int expenseId = Integer.parseInt(request.getParameter("categoryId"));
-            dao.delete(expenseId);                               
-            request.setAttribute("categories", dao.showAll());
+            dao.delete(expenseId);       
+            
+            List<Category> categories = dao.showAll();
+            
+            categories.forEach((cat) -> {
+                cat.setTotal(expensesDao.getCategorySum(cat.getId()));
+            });
+            
+            request.setAttribute("categories", categories);
             
             forward = ROUTE_LIST;
         } else {
@@ -110,9 +125,15 @@ public class CategoriesController extends HttpServlet {
             category.setUpdatedAt(new Date());            
             dao.update(Integer.parseInt(id), category.getName());
         }
+        
+        List<Category> categories = dao.showAll();
+            
+        categories.forEach((cat) -> {
+            cat.setTotal(expensesDao.getCategorySum(cat.getId()));
+        });
 
         RequestDispatcher view = request.getRequestDispatcher(ROUTE_LIST);
-        request.setAttribute("categories", dao.showAll());
+        request.setAttribute("categories", categories);
         view.forward(request, response);
     }
 

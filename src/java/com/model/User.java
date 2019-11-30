@@ -5,7 +5,6 @@
  */
 package com.model;
 
-import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,13 +18,12 @@ import javax.persistence.Transient;
  */
 
 @Entity
-@Table(name = "Categories")
-public class Category implements Serializable {
+@Table(name = "Users")
+public class User {
     @Id @GeneratedValue
     private int id;
-    private String name;
-    @Transient
-    private Double total;
+    private String email;
+    private String password;
     private Date createdAt;
     private Date updatedAt;
 
@@ -37,12 +35,20 @@ public class Category implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getEmail() {
+        return email;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Date getCreatedAt() {
@@ -60,13 +66,5 @@ public class Category implements Serializable {
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
-
-    public Double getTotal() {
-        return total;
-    }
-
-    public void setTotal(Double total) {
-        this.total = total;
-    }        
-
+        
 }

@@ -5,6 +5,7 @@
         <group>
             <file>file:/Volumes/HD-Luis/MyFiles/Me/ITSZ/7mo/javaweb/netbeans/expense-tracker/web/expense.jsp</file>
             <file>file:/Volumes/HD-Luis/MyFiles/Me/ITSZ/7mo/javaweb/netbeans/expense-tracker/src/java/com/dao/CategoryDao.java</file>
+            <file>file:/Volumes/HD-Luis/MyFiles/Me/ITSZ/7mo/javaweb/netbeans/expense-tracker/src/java/com/model/Category.java</file>
             <file>file:/Volumes/HD-Luis/MyFiles/Me/ITSZ/7mo/javaweb/netbeans/expense-tracker/src/java/com/dao/ExpenseDao.java</file>
             <file>file:/Volumes/HD-Luis/MyFiles/Me/ITSZ/7mo/javaweb/netbeans/expense-tracker/web/listCategories.jsp</file>
             <file>file:/Volumes/HD-Luis/MyFiles/Me/ITSZ/7mo/javaweb/netbeans/expense-tracker/src/java/com/controller/ExpensesController.java</file>
@@ -13,6 +14,7 @@
             <file>file:/Volumes/HD-Luis/MyFiles/Me/ITSZ/7mo/javaweb/netbeans/expense-tracker/src/java/com/controller/CategoriesController.java</file>
             <file>file:/Volumes/HD-Luis/MyFiles/Me/ITSZ/7mo/javaweb/netbeans/expense-tracker/web/category.jsp</file>
             <file>file:/Volumes/HD-Luis/MyFiles/Me/ITSZ/7mo/javaweb/netbeans/expense-tracker/src/java/com/model/Expense.java</file>
+            <file>file:/Volumes/HD-Luis/MyFiles/Me/ITSZ/7mo/javaweb/netbeans/expense-tracker/src/java/hibernate.cfg.xml</file>
         </group>
     </open-files>
 </project-private>

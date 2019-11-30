@@ -36,7 +36,7 @@
                 </div>
             </div>            
         </nav>
-        <div class="container is-widescreen">
+        <div class="container">
             <div class="columns mt-4">
                 <div class="column">
                     <div class="level">
@@ -60,7 +60,7 @@
                             <th style="width: 100px" scope="col">Id</th>
                             <th scope="col">Descripción</th>
                             <th scope="col">Monto</th>
-                            <th scope="col">Categoria</th>
+                            <th scope="col">Categoria</th>                            
                             <th style="width: 230px" scope="col">Acciones</th>
                         </tr>
                     </thead>

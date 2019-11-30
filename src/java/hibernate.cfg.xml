@@ -48,5 +48,6 @@ Contributor(s):
     <property name="hibernate.connection.password">root</property>
     <mapping class="com.model.Category"/>
     <mapping class="com.model.Expense"/>    
+    <mapping class="com.model.User"/>    
   </session-factory>
 </hibernate-configuration>

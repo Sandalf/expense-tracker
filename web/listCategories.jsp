@@ -37,12 +37,12 @@
                 </div>
             </div>            
         </nav>
-        <div class="container is-widescreen">
+        <div class="container">
             <div class="columns mt-4">
                 <div class="column">
                     <div class="level">
                         <div class="level-left">
-                            <div class="level-item">                           
+                            <div class="level-item"> 
                             </div>
                         </div>
                         <div class="level-right">
@@ -59,6 +59,7 @@
                         <tr>
                             <th style="width: 100px" scope="col">Id</th>
                             <th scope="col">Nombre</th>
+                            <th scope="col">Total</th>
                             <th style="width: 230px" scope="col">Acciones</th>
                         </tr>
                     </thead>
@@ -67,6 +68,7 @@
                             <tr>
                                 <td><c:out value="${category.id}" /></td>
                                 <td><c:out value="${category.name}" /></td>
+                                <td><c:out value="$${category.total}" /></td>
                                 <td>
                                     <a class="button is-success" href="CategoriesController?action=edit&categoryId=<c:out value='${category.id}'/>">Actualizar</a>
                                     <a class="button is-danger" href="CategoriesController?action=delete&categoryId=<c:out value='${category.id}'/>">Eliminar</a>
