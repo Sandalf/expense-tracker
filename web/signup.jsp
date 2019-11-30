@@ -27,9 +27,6 @@
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-envelope"></i>
                                 </span>
-                                <span class="icon is-small is-right">
-                                    <i class="fas fa-check"></i>
-                                </span>
                             </p>
                         </div>
                         <div class="field">
@@ -52,6 +49,7 @@
                 </div>
             </div>
         </div>
+        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
         <script src="./js/hash.js"></script>
         <script src="./js/login.js"></script>
         <script>
