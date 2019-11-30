@@ -93,40 +93,26 @@ public class LoginController extends HttpServlet {
                 if (dbUser == null) {
                     user.setCreatedAt(new Date());
                     dao.save(user);
-//                    view = request.getRequestDispatcher(ROUTE_LIST_EXPENSES);
-//                    request.setAttribute("expenses", expenseDao.showAll());
-//                    view = request.getRequestDispatcher(ROUTE_SINGUP);
-//                    request.setAttribute("success", "Usuario registrado exitosamente");
                     out.print("{ \"success\": \"Usuario registrado exitosamente\" }");
                 } else {
-//                    view = request.getRequestDispatcher(ROUTE_SINGUP);
-//                    request.setAttribute("error", "Ya existe un usuario con estos datos");
                     out.print("{ \"error\": \"Ya existe un usuario con estos datos\" }");
                 }
                 break;
             case ACTION_LOGIN:
                 if (dbUser != null && isCorrectPassword) {
-//                    view = request.getRequestDispatcher(ROUTE_LIST_EXPENSES);
-//                    request.setAttribute("expenses", expenseDao.showAll());
-//                    view = request.getRequestDispatcher(ROUTE_LOGIN);
-//                    request.setAttribute("success", "Contraseña correcta");
-                    out.print("{ \"success\": \"Contraseña correcta\" }");
+                    out.print("{ \"success\": \"Contrasena correcta\" }");
+                } else if (dbUser == null) {
+                    out.print("{ \"error\": \"Usuario no existe\" }");
                 } else {
-//                    view = request.getRequestDispatcher(ROUTE_LOGIN);
-//                    request.setAttribute("error", "Usuario o contraseña incorrectos");
-                    out.print("{ \"error\": \"Usuario o contraseña incorrectos\" }");
+                    out.print("{ \"error\": \"Usuario o contrasena incorrectos\" }");                    
                 }
                 break;
             default:
-//                view = request.getRequestDispatcher(ROUTE_LOGIN);
-//                request.setAttribute("error", "Ocurrio un error");
                 out.print("{ \"error\": \"Ocurrio un error\" }");
                 break;
         }
 
         out.flush();
-
-        //view.forward(request, response);
     }
 
     /**
